@@ -1,5 +1,5 @@
 html body.afp-26 .card--hero__content {
-  padding-top: 64px;
+  padding-top: 80px;
   padding-bottom: 64px;
   padding-right: 0;
     padding-left: 0;
@@ -15,12 +15,6 @@ html body.afp-26 .card--hero__text {
 html body.afp-26 .cta-list__subheading {
   font-weight: 800;
   font-size: 15px;
-}
-html body.afp-26 .cta-list__item {
-  position: relative;
-}
-html body.afp-26 .cta-list__btn {
-  white-space: nowrap;
 }
 html body.afp-26 .card--hero__btn {
   width: 100%;
@@ -60,7 +54,7 @@ html body.afp-26 .tab-section__nav {
   justify-content: space-between;
 }
 html body.afp-26 .tab-section__nav-btn {
-  font-size: 20px;
+  font-size: 18px;
   border: 1px solid #e1e1e1;
   padding: 12px 28px;
 }

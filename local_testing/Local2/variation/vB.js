@@ -112,41 +112,6 @@
       list.appendChild(target);
     }
   }
-  // Equalizes .cta-list__item heights so the buttons land on a shared bottom
-  // baseline (CSS align-items:stretch alone isn't reliably taking effect here).
-  // Bottom-anchors each card's button on a shared baseline by measuring the
-  // tallest card's natural height, then absolute-positioning every button at
-  // that card's own bottom/left padding (avoids nested-flex + margin:auto
-  // interactions, which produced inconsistent extra growth in this markup).
-  function equalizeCardHeights() {
-    const items = qsa(".cta-list__item");
-    if (items.length < 2) return;
-    items.forEach(function (item) {
-      item.style.minHeight = "";
-      const btn = qs(".cta-list__btn", item);
-      if (btn) {
-        btn.style.position = "";
-        btn.style.bottom = "";
-        btn.style.left = "";
-      }
-    });
-    const maxHeight = items.reduce(function (max, item) {
-      return Math.max(max, item.getBoundingClientRect().height);
-    }, 0);
-    if (maxHeight <= 0) return;
-    items.forEach(function (item) {
-      const cs = window.getComputedStyle(item);
-      const padBottom = parseFloat(cs.paddingBottom) || 0;
-      const padLeft = parseFloat(cs.paddingLeft) || 0;
-      item.style.minHeight = maxHeight + "px";
-      const btn = qs(".cta-list__btn", item);
-      if (btn) {
-        btn.style.position = "absolute";
-        btn.style.bottom = padBottom + "px";
-        btn.style.left = padLeft + "px";
-      }
-    });
-  }
   // Updates hero headline + the 3 CTA boxes.
   function updateHero() {
     setText(qs(".card--hero__title"), HERO_TITLE);
@@ -164,7 +129,6 @@
       setText(buttonEl, box.buttonText);
       if (box.href && buttonEl) buttonEl.setAttribute("href", box.href);
     });
-    equalizeCardHeights();
   }
   // Updates the "AFP Certifications" tab section: headline, tab order,
   function updateCertTabSection() {
